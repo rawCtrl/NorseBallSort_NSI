@@ -9,5 +9,5 @@ python setup.py install
 ## Comment faire tourner le jeu ?
 
 ```python
-python Main.py
+python3 Main.py
 ```

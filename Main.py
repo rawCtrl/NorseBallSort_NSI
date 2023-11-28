@@ -91,10 +91,10 @@ class Main:
 
 			for event in pygame.event.get():
 				if event.type == MOUSEBUTTONDOWN:
-					if self.etat == True:
+					if self.etat:
 						for i in range(len(self.plateau)):
 							for b in range(len(self.plateau[i].pile)):
-								if self.plateau[i].rect.collidepoint(event.pos) and self.plateau[i].pile != [] and self.action == 0:
+								if self.plateau[i].rect.collidepoint(event.pos) == True and self.plateau[i].pile != [] and self.action == 0:
 									self.ball = self.plateau[i].pile.pop(-1)
 									self.ball.rect.update(382, 122, 40, 40)
 									self.dessiner()
@@ -104,10 +104,11 @@ class Main:
 									self.etat = False
 									break				
 
-					if self.etat == False:
+					else:
 						for j in range(len(self.plateau)):
 							if self.plateau[j].rect.collidepoint(event.pos) == True and self.plateau[j].peut_empiler(self.ball) == True and self.action == 0:
 								self.plateau[j].empiler(self.ball)
+								print(self.plateau[j].peut_empiler(self.ball))
 								self.plateau[j].pile[-1].rect.update(182 + j * 100, 415 - 50 * len(self.plateau[j].pile), 40, 40)
 								self.ball = None
 								self.action += 1

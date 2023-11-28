@@ -5,9 +5,9 @@ class Tube:
 		self.rect = rect
 		self.pile = []
 
-	def peut_empiler(self, c: Ball):
+	def peut_empiler(self, c):
 		if self.pile != []:
-			if (self.pile[-1].couleur != c.couleur) and (len(self.pile) == 4):
+			if self.pile[-1].couleur != c.couleur or len(self.pile) >= 4:
 				return False
 		return True
 
